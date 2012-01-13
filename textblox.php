@@ -3,8 +3,8 @@
 Plugin Name: TextBlox
 Description: Organize TextBlocks and insert it in your Articles or Pages using Shortcodes
 Author: Powie
-Author URI: http://powie.de
-Plugin URI: http://powie.de
+Author URI: http://www.powie.de
+Plugin URI: http://www.powie.de/php/wordpress-textblox/
 Version: 0.9.0
 */
 
