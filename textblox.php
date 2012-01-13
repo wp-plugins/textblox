@@ -20,6 +20,9 @@ if (get_option('tb_version')  != $tb_version) {
 // now let's grab the options table data
 $tb_version = get_option('tb_version');
 
+//Init
+define('TB_PLUGIN_URL', plugins_url('',plugin_basename(__FILE__)).'/'); //PLUGIN DIRECTORY
+
 add_action( 'init', 'create_tb_post_types' );
 function create_tb_post_types() {
 	 $labels = array(
@@ -51,6 +54,7 @@ function create_tb_post_types() {
 			),
 			'public' => false,
 			'menu_position' => 20,
+			'menu_icon' => TB_PLUGIN_URL.'textblox_16.png',
 			'show_ui' => true,
 			'capability_type' => 'post',
 			'rewrite' => array( 'slug' => 'textblox', 'with_front' => false ),
