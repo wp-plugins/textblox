@@ -3,7 +3,7 @@ Contributors: PowieT
 Donate link: http://www.powie.de
 Tags: Text Blocks Templates
 Requires at least: 2.5
-Tested up to: 3.3.2
+Tested up to: 3.5
 Stable tag: 0.9.0
 
 Create Textblocks and insert it into your pages using a shortcode. So you can simple update standard text
