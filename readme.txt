@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: PowieT
 Donate link: http://www.powie.de
-Tags: Text Blocks Templates Area Section Content
+Tags: Text, Blocks, Templates, Area, Section, Content
 Requires at least: 2.5
 Tested up to: 3.5
 Stable tag: 0.9.1
