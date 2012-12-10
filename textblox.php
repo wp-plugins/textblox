@@ -1,18 +1,18 @@
 <?php
 /*
 Plugin Name: TextBlox
-Description: Organize TextBlocks and insert it in your Articles or Pages using Shortcodes
+Description: Organize textblocks, sections, areas and insert it in your posts or pages using shortcodes
 Author: Powie
 Author URI: http://www.powie.de
 Plugin URI: http://www.powie.de/php/wordpress-textblox/
-Version: 0.9.0
+Version: 0.9.1
 */
 
 /*
 	Some Rules: TextBox -> TB
 */
 
-$tb_version = "0.9.0";
+$tb_version = "0.9.1";
 // add our default options if they're not already there:
 if (get_option('tb_version')  != $tb_version) {
     update_option('tb_version', $tb_version);}
@@ -181,8 +181,46 @@ function tb_options_page() { 	// Output the options page
 	<div class="wrap" style="width:500px">
 	<?php screen_icon(); ?>
 		<h2>TextBlox Plugin Reference</h2>
-		<p>Use shortcode <code>[textblox id=123]</code> to insert your Blocks into a page.</p>
-
-		<p>You're using TextBlox Version <?php echo $tb_version;?> by <a href="http://powie.de">Powie</a>.
+		<p>Use shortcode <code>[textblox id=123]</code> to insert your Blocks into a page.
+		   Or pick your content directly in TinyMCE on that icon:
+		   <img src="<?php echo TB_PLUGIN_URL; ?>textblox_16.png" alt="tb" title="TextBlox" /></p>
+		<p>You're using TextBlox Version <?php echo $tb_version;?> by <a href="http://powie.de">Powie</a>.</p>
 	</div><!--//wrap div-->
-<?php } ?>
+<?php }
+
+//Button Init ##################################################################
+// Set up our TinyMCE button
+function setup_textblox_button() {
+	add_filter('mce_external_plugins', 'add_tinymce_button_script');
+	add_filter('mce_buttons', 'register_tinymce_button');
+}
+
+// Register our TinyMCE button
+function register_tinymce_button($buttons) {
+	array_push($buttons, '|', 'TextbloxShortcodeButton');
+	return $buttons;
+}
+
+
+// Register our TinyMCE Script
+function add_tinymce_button_script($plugin_array) {
+	$plugin_array['TextbloxShortcode'] = plugins_url('textbloxbutton.js', __FILE__);
+	return $plugin_array;
+}
+
+//add_action('admin_init', 'setup_textblox_button');
+if ($_REQUEST['post_type'] != 'textblox') {
+	setup_textblox_button();
+}
+
+//AJAX Stuff
+add_action('wp_ajax_textblox_tinymce', 'textblox_ajax_tinymce');
+
+function textblox_ajax_tinymce() {
+	// check for rights
+	if ( !current_user_can('edit_pages') && !current_user_can('edit_posts') )
+		die(__("You are not allowed to be here"));
+	include_once( dirname( dirname(__FILE__) ) . '/textblox/textbloxtinymce.php');
+	die();
+}
+?>
