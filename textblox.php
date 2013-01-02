@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: TextBlox
+Plugin Name: Powie's TextBlox
 Description: Organize textblocks, sections, areas and insert it in your posts or pages using shortcodes
 Author: Powie
 Author URI: http://www.powie.de
 Plugin URI: http://www.powie.de/php/wordpress-textblox/
-Version: 0.9.1
+Version: 0.9.2
 */
 
 /*
@@ -22,6 +22,7 @@ $tb_version = get_option('tb_version');
 
 //Init
 define('TB_PLUGIN_URL', plugins_url('',plugin_basename(__FILE__)).'/'); //PLUGIN DIRECTORY
+define( 'TB_PLUGIN_DIR', 'textblox');
 
 add_action( 'init', 'create_tb_post_types' );
 function create_tb_post_types() {
@@ -173,9 +174,11 @@ add_action('admin_menu', 'add_tb_option_page');
 
 function add_tb_option_page() {
 	// hook in the options page function
-	add_options_page('TextBlox', 'TextBlox', 6, __FILE__, 'tb_options_page');
+	//add_options_page('TextBlox', 'TextBlox', 6, __FILE__, 'tb_options_page');
+	add_options_page('TextBlox','TextBlox', 9, TB_PLUGIN_DIR.'/textblox_settings.php');
 }
 
+/*
 function tb_options_page() { 	// Output the options page
 	global $tb_version ?>
 	<div class="wrap" style="width:500px">
@@ -186,7 +189,7 @@ function tb_options_page() { 	// Output the options page
 		   <img src="<?php echo TB_PLUGIN_URL; ?>textblox_16.png" alt="tb" title="TextBlox" /></p>
 		<p>You're using TextBlox Version <?php echo $tb_version;?> by <a href="http://powie.de">Powie</a>.</p>
 	</div><!--//wrap div-->
-<?php }
+<?php } */
 
 //Button Init ##################################################################
 // Set up our TinyMCE button

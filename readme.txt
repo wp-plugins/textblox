@@ -4,7 +4,7 @@ Donate link: http://www.powie.de
 Tags: Text, Blocks, Templates, Area, Section, Content
 Requires at least: 2.5
 Tested up to: 3.5
-Stable tag: 0.9.1
+Stable tag: 0.9.2
 
 Create Textblocks and insert it into your pages using a shortcode. So you can simple update standard text
 
@@ -35,6 +35,9 @@ This shortcode will show the text inside your page
 Use our forum at www.powie.de for support
 
 == Changelog ==
+
+= 0.9.2 =
+* New settings page
 
 = 0.9.1 =
 * TinyMCE button
