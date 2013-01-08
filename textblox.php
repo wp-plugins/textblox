@@ -132,13 +132,16 @@ function tb_shortcode($atts) {
 			foreach ($tbs as $tb) {
 				$postslug = $tb->post_name;
 				$title = $tb->post_title;
-				//$text = wpautop($tb->post_content);
-				$text = $tb->post_content;
-				$tb_shortcode = '<!-- tb-'.$title.' -->'.$text;
+				$text = trim(wpautop($tb->post_content));
+				$text = substr($text,3);
+				if ( substr($text,-4) == '</p>' ) {
+					$text = substr($text,0,strlen($text)-4);
+				}
+				$tb_shortcode = '<!-- tb-'.$title.' -->'.$text.'<!-- tbend -->';
 			}
 		}
 		//$tb_shortcode = do_shortcode( $tb_shortcode );
-		return (__($tb_shortcode));
+		return $tb_shortcode;
 }//ends the tb_shortcode function
 
 add_filter('manage_edit-tb_faqs_columns', 'tb_columns');
