@@ -12,7 +12,7 @@ global $wpdb;
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>TextBlox Picker</title>
+	<title><?php _e('TextBlox Picker', 'textblox') ?></title>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php echo get_option('blog_charset'); ?>" />
 	<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
@@ -36,7 +36,7 @@ jQuery(document).ready(function(){
 	<br />
 	<table border="0" cellpadding="4" cellspacing="0">
       <tr>
-        <td nowrap="nowrap"><label for="gallerytag">TextBlox:</label></td>
+        <td nowrap="nowrap"><label for="gallerytag"><?php _e('TextBlox', 'textblox') ?>:</label></td>
         <td><select id="tbid" name="textbloxid" style="width: 320px">
                 <!--<option value="0" selected="selected">TextBlox Auswahl</option>-->
                 <?php
@@ -57,7 +57,7 @@ jQuery(document).ready(function(){
                 	echo '</optgroup>';
                 }
 				//without terms
-				echo '<optgroup label="ohne">';
+				echo '<optgroup label="'.__('without Category','textblox').'">';
 				$tbs = get_posts( array(
 									'order'          => 'ASC',
 									'orderby' 		 => 'title',
@@ -80,11 +80,11 @@ jQuery(document).ready(function(){
 
 	<div class="mceActionPanel">
 		<div style="float: left">
-			<input type="button" id="cancel" name="cancel" value="<?php _e("Cancel", 'default'); ?>" onclick="tinyMCEPopup.close();" />
+			<input type="button" id="cancel" name="cancel" value="<?php _e("Cancel", 'textblox'); ?>" onclick="tinyMCEPopup.close();" />
 		</div>
 
 		<div style="float: right">
-			<input type="submit" id="insert" name="insert" value="<?php _e("Insert", 'default'); ?>" onclick="insertTBshortcode();" />
+			<input type="submit" id="insert" name="insert" value="<?php _e("Insert", 'textblox'); ?>" onclick="insertTBshortcode();" />
 		</div>
 	</div>
 

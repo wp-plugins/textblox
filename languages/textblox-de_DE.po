@@ -1,0 +1,131 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TextBlox\n"
+"POT-Creation-Date: 2013-01-08 10:41+0100\n"
+"PO-Revision-Date: 2013-01-08 10:50+0100\n"
+"Last-Translator: Powie <te@powie.de>\n"
+"Language-Team: powie.de <te@powie.de>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../textblox.php:35
+msgid "TextBlox Categories"
+msgstr "TextBlox Kategorien"
+
+#: ../textblox.php:36
+msgid "TextBlox Category"
+msgstr "TextBlox Kategorie"
+
+#: ../textblox.php:37
+msgid "Search TextBlox Categories"
+msgstr "Suche Kategorien"
+
+#: ../textblox.php:38
+msgid "All TextBlox Categories"
+msgstr "Alle Kategorien"
+
+#: ../textblox.php:39
+msgid "Parent TextBlox Category"
+msgstr "Übergeordnete Kategorie"
+
+#: ../textblox.php:40
+msgid "Parent TextBlox Category:"
+msgstr "Übergeordnete Kategorie:"
+
+#: ../textblox.php:41
+msgid "Edit TextBlox Category"
+msgstr "Bearbeite TextBlox Kategorie"
+
+#: ../textblox.php:42
+msgid "Update TextBlox Category"
+msgstr "Ändere TextBlox Kategorie"
+
+#: ../textblox.php:43
+msgid "Add New TextBlox Category"
+msgstr "Neue TextBlox Kategorie"
+
+#: ../textblox.php:44
+msgid "New TextBlox Category Name"
+msgstr "Neuer Kategorie Name"
+
+#: ../textblox.php:56 ../textblox.php:57 ../textbloxtinymce.php:39
+msgid "TextBlox"
+msgstr "TextBlox"
+
+#: ../textblox.php:58
+msgid "Edit TextBlox"
+msgstr "TextBlox bearbeiten"
+
+#: ../textblox.php:59
+msgid "Add TextBlox"
+msgstr "Neuer TextBlox"
+
+#: ../textblox.php:90
+msgid "Show All"
+msgstr "Zeige alle"
+
+#: ../textblox.php:148
+msgid "Question"
+msgstr "Frage"
+
+#: ../textblox.php:149
+msgid "Categories"
+msgstr "Kategorien"
+
+#: ../textblox.php:150
+msgid "Date"
+msgstr "Datum"
+
+#: ../textblox.php:181
+msgid "TextBlox Setup"
+msgstr "TextBlox Setup"
+
+#: ../textblox.php:228
+msgid "You are not allowed to be here"
+msgstr "Du darfst nicht hier sein"
+
+#: ../textbloxtinymce.php:15
+msgid "TextBlox Picker"
+msgstr "TextBlox Selektor"
+
+#: ../textbloxtinymce.php:60
+msgid "without Category"
+msgstr "ohne Kategorie"
+
+#: ../textbloxtinymce.php:83
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../textbloxtinymce.php:87
+msgid "Insert"
+msgstr "Einfügen"
+
+#: ../textblox_settings.php:3
+msgid "Textblox Settings"
+msgstr "TextBlox Einstellungen"
+
+#: ../textblox_settings.php:7
+msgid "Usage"
+msgstr "Benutzung"
+
+#: ../textblox_settings.php:9
+msgid ""
+"Use shortcode <code>[textblox id=123]</code> to insert your blocks into a "
+"page or post."
+msgstr ""
+"Benutze den Shortcode <code>[textblox id=123]</code> um TextBlox Blöcke "
+"direkt in deinen Beitrag oder deine Seite einzufügen."
+
+#: ../textblox_settings.php:10
+msgid "Or pick your content directly in TinyMCE on that icon:"
+msgstr "Oder wähle deine Blöcke direkt im Editor aus über dieses Icon:"
+
+#: ../textblox_settings.php:15
+msgid "About"
+msgstr "Über"

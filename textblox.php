@@ -2,17 +2,17 @@
 /*
 Plugin Name: Powie's TextBlox
 Description: Organize textblocks, sections, areas and insert it in your posts or pages using shortcodes
-Author: Powie
+Author: PowieT
 Author URI: http://www.powie.de
-Plugin URI: http://www.powie.de/php/wordpress-textblox/
-Version: 0.9.2
+Plugin URI: http://www.powie.de/wordpress/textblox/
+Version: 0.9.3
 */
 
 /*
 	Some Rules: TextBox -> TB
 */
 
-$tb_version = "0.9.1";
+$tb_version = "0.9.3";
 // add our default options if they're not already there:
 if (get_option('tb_version')  != $tb_version) {
     update_option('tb_version', $tb_version);}
@@ -21,37 +21,42 @@ if (get_option('tb_version')  != $tb_version) {
 $tb_version = get_option('tb_version');
 
 //Init
-define('TB_PLUGIN_URL', plugins_url('',plugin_basename(__FILE__)).'/'); //PLUGIN DIRECTORY
-define( 'TB_PLUGIN_DIR', 'textblox');
+define('TB_PLUGIN_URL', plugins_url('',plugin_basename(__FILE__)).'/'); //PLUGIN DIRECTORY URL
+define( 'TB_PLUGIN_DIR', dirname( plugin_basename( __FILE__ ) ) );
+add_action('init', 'tb_translation');
+
+function tb_translation(){
+	load_plugin_textdomain( 'textblox', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
 
 add_action( 'init', 'create_tb_post_types' );
 function create_tb_post_types() {
 	 $labels = array(
-		'name' => _x( 'TextBlox Categories', 'taxonomy general name' ),
-		'singular_name' => _x( 'TextBlox Category', 'taxonomy singular name' ),
-		'search_items' =>  __( 'Search TextBlox Categories' ),
-		'all_items' => __( 'All TextBlox Categories' ),
-		'parent_item' => __( 'Parent TextBlox Category' ),
-		'parent_item_colon' => __( 'Parent TextBlox Category:' ),
-		'edit_item' => __( 'Edit TextBlox Category' ),
-		'update_item' => __( 'Update TextBlox Category' ),
-		'add_new_item' => __( 'Add New TextBlox Category' ),
-		'new_item_name' => __( 'New TextBlox Category Name' ),
-  );
+		'name' => __( 'TextBlox Categories', 'textblox' ),
+		'singular_name' => __( 'TextBlox Category', 'textblox' ),
+		'search_items' =>  __( 'Search TextBlox Categories', 'textblox' ),
+		'all_items' => __( 'All TextBlox Categories', 'textblox' ),
+		'parent_item' => __( 'Parent TextBlox Category', 'textblox' ),
+		'parent_item_colon' => __( 'Parent TextBlox Category:', 'textblox' ),
+		'edit_item' => __( 'Edit TextBlox Category' , 'textblox'),
+		'update_item' => __( 'Update TextBlox Category', 'textblox' ),
+		'add_new_item' => __( 'Add New TextBlox Category', 'textblox' ),
+		'new_item_name' => __( 'New TextBlox Category Name', 'textblox' ),
+    );
   	register_taxonomy('textblox_category',array('textblox'), array(
 		'hierarchical' => true,
 		'labels' => $labels,
 		'show_ui' => true,
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'textblox-category' ),
-  ));
+    ));
 	register_post_type( 'textblox',
 		array(
 			'labels' => array(
-				'name' => __( 'TextBlox' ),
-				'singular_name' => __( 'TextBlox' ),
-				'edit_item'	=>	__( 'Edit TextBlox'),
-				'add_new_item'	=>	__( 'Add TextBlox')
+				'name' => __( 'TextBlox' , 'textblox'),
+				'singular_name' => __( 'TextBlox', 'textblox' ),
+				'edit_item'	=>	__( 'Edit TextBlox', 'textblox'),
+				'add_new_item'	=>	__( 'Add TextBlox', 'textblox')
 			),
 			'public' => false,
 			'menu_position' => 20,
@@ -59,7 +64,7 @@ function create_tb_post_types() {
 			'show_ui' => true,
 			'capability_type' => 'post',
 			'rewrite' => array( 'slug' => 'textblox', 'with_front' => false ),
-			'taxonomies' => array( 'TextBlox '),
+			'taxonomies' => array( 'textblox'),
 			'supports' => array('title','editor','revisions')
 		)
 	);
@@ -82,7 +87,7 @@ function restrict_tb_listings_by_categories() {
 
 		// output html for taxonomy dropdown filter
 		echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
-		echo "<option value=''>Show All $tax_name</option>";
+		echo "<option value=''>".__('Show All', 'textblox')." $tax_name</option>";
 		foreach ($terms as $term) {
 			// output each select option line, check against the last $_GET to show the current option selected
 			echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
@@ -121,30 +126,28 @@ function tb_shortcode($atts) {
 
 		global $wpdb; $catname = $wpdb->get_var("SELECT name FROM $wpdb->terms WHERE slug = '$cat'");
 
-		if (!empty($cat)) {$qa_shortcode .= '<p class="faq-catname">'.$catname.'</p>';}
+		//if (!empty($cat)) {$qa_shortcode .= '<p class="catname">'.$catname.'</p>';}
 
 		if ($tbs) {
-		foreach ($tbs as $tb) {
+			foreach ($tbs as $tb) {
+				$postslug = $tb->post_name;
+				$title = $tb->post_title;
+				$text = wpautop($tb->post_content);
+				$tb_shortcode .= '<!-- tb-'.$title.' -->'.$text;
+			}
+		}
 
-		$postslug = $tb->post_name;
-		$title = $tb->post_title;
-		$text = wpautop($tb->post_content);
-
-		$tb_shortcode .= '<!-- '.$title.' -->'.$text;
-
-		}}  // end slideshow loop
-
-	$tb_shortcode = do_shortcode( $tb_shortcode );
-	return (__($tb_shortcode));
+		$tb_shortcode = do_shortcode( $tb_shortcode );
+		return (__($tb_shortcode));
 }//ends the tb_shortcode function
 
 add_filter('manage_edit-tb_faqs_columns', 'tb_columns');
 function tb_columns($columns) {
     $columns = array(
 		'cb' => '<input type="checkbox" />',
-		'title' => __( 'Question' ),
-		'textblox_category' => __( 'Categories' ),
-		'date' => __( 'Date' )
+		'title' => __( 'Question', 'textblox' ),
+		'textblox_category' => __( 'Categories', 'textblox' ),
+		'date' => __( 'Date' , 'textblox' )
 	);
     return $columns;
 }
@@ -175,7 +178,7 @@ add_action('admin_menu', 'add_tb_option_page');
 function add_tb_option_page() {
 	// hook in the options page function
 	//add_options_page('TextBlox', 'TextBlox', 6, __FILE__, 'tb_options_page');
-	add_options_page('TextBlox','TextBlox', 9, TB_PLUGIN_DIR.'/textblox_settings.php');
+	add_options_page(__('TextBlox Setup', 'textblox'),__('TextBlox Setup', 'textblox'), 9, TB_PLUGIN_DIR.'/textblox_settings.php');
 }
 
 /*

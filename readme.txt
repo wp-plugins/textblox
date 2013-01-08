@@ -4,16 +4,18 @@ Donate link: http://www.powie.de
 Tags: Text, Blocks, Templates, Area, Section, Content
 Requires at least: 2.5
 Tested up to: 3.5
-Stable tag: 0.9.2
+Stable tag: 0.9.3
+License: GPLv2
 
-Create Textblocks and insert it into your pages using a shortcode. So you can simple update standard text
+Create Textblocks and insert it into your pages using a shortcode. You can very simple update standard text
 
 == Description ==
 
-Create textblocks, areas, sections or other default content and insert it into your pages using a shortcode. So you can simple update standard text
+Create textblocks, areas, sections or other default content and insert it into your pages using a shortcode. So you can simple update standard text. Ultimate Plugin if you have always same content on many posts or pages. Simple update the TextBlox post, and all content is changed on the pages that includes that TextBlox content.
+
+To insert a TextBlox content on a page or post include Shortcode: [textblox id=123]. You can Pick the right content with the Picker in TinyMCE, where all TextBlox are listed.
 
 = Features: =
-
 creates a simple custom post style
 tinymce button to seelect content for simple shortcode creation
 
@@ -35,6 +37,9 @@ This shortcode will show the text inside your page
 Use our forum at www.powie.de for support
 
 == Changelog ==
+= 0.9.3 (08.01.2013) =
+* Localisation
+* de_DE Language
 
 = 0.9.2 =
 * New settings page
@@ -44,3 +49,9 @@ Use our forum at www.powie.de for support
 
 = 0.9.0 =
 * initial version
+
+== Upgrade Notice ==
+na
+
+== Screenshots ==
+na
