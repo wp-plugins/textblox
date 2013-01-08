@@ -23,8 +23,8 @@ $tb_version = get_option('tb_version');
 //Init
 define('TB_PLUGIN_URL', plugins_url('',plugin_basename(__FILE__)).'/'); //PLUGIN DIRECTORY URL
 define( 'TB_PLUGIN_DIR', dirname( plugin_basename( __FILE__ ) ) );
-add_action('init', 'tb_translation');
 
+add_action('init', 'tb_translation');
 function tb_translation(){
 	load_plugin_textdomain( 'textblox', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
@@ -132,12 +132,12 @@ function tb_shortcode($atts) {
 			foreach ($tbs as $tb) {
 				$postslug = $tb->post_name;
 				$title = $tb->post_title;
-				$text = wpautop($tb->post_content);
-				$tb_shortcode .= '<!-- tb-'.$title.' -->'.$text;
+				//$text = wpautop($tb->post_content);
+				$text = $tb->post_content;
+				$tb_shortcode = '<!-- tb-'.$title.' -->'.$text;
 			}
 		}
-
-		$tb_shortcode = do_shortcode( $tb_shortcode );
+		//$tb_shortcode = do_shortcode( $tb_shortcode );
 		return (__($tb_shortcode));
 }//ends the tb_shortcode function
 
