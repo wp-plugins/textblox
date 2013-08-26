@@ -3,7 +3,7 @@ Contributors: PowieT
 Donate link: http://www.powie.de
 Tags: Text, Blocks, Templates, Area, Section, Content
 Requires at least: 2.5
-Tested up to: 3.5
+Tested up to: 3.6
 Stable tag: 0.9.3
 License: GPLv2
 
