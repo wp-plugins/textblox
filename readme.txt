@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Text, Blocks, Templates, Area, Section, Content
 Requires at least: 2.5
 Tested up to: 3.8
-Stable tag: 0.9.3
+Stable tag: 0.9.4
 License: GPLv2
 
 Create Textblocks and insert it into your pages using a shortcode. You can very simple update standard text
@@ -38,6 +38,9 @@ Support Forum @ [powie.de](http://goo.gl/lfR7B)
 Use our forum at www.powie.de for support
 
 == Changelog ==
+= 0.9.4 (03.06.2014) =
+* Format Bug Fixed
+
 = 0.9.3 (08.01.2013) =
 * Localisation
 * de_DE Language

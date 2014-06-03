@@ -5,14 +5,14 @@ Description: Organize textblocks, sections, areas and insert it in your posts or
 Author: PowieT
 Author URI: http://www.powie.de
 Plugin URI: http://www.powie.de/wordpress/textblox/
-Version: 0.9.3
+Version: 0.9.4
 */
 
 /*
 	Some Rules: TextBox -> TB
 */
 
-$tb_version = "0.9.3";
+$tb_version = "0.9.4";
 // add our default options if they're not already there:
 if (get_option('tb_version')  != $tb_version) {
     update_option('tb_version', $tb_version);}
@@ -133,7 +133,7 @@ function tb_shortcode($atts) {
 				$postslug = $tb->post_name;
 				$title = $tb->post_title;
 				$text = trim(wpautop($tb->post_content));
-				$text = substr($text,3);
+				//$text = substr($text,3);
 				if ( substr($text,-4) == '</p>' ) {
 					$text = substr($text,0,strlen($text)-4);
 				}

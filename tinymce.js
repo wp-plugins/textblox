@@ -6,7 +6,7 @@ function insertTBshortcode() {
 	var tagtext;
     var textblox_id = document.getElementById('tbid').value;
 
-    //alert(textblox_id);
+    // //alert(textblox_id);
 
 	if (textblox_id != "0" ) {
 		tagtext = "[textblox id=" + textblox_id + "]";
