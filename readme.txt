@@ -3,7 +3,7 @@ Contributors: PowieT
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UST438WYW6HNJ
 Tags: Text, Blocks, Templates, Area, Section, Content
 Requires at least: 2.5
-Tested up to: 4.0
+Tested up to: 4.2
 Stable tag: 0.9.4
 License: GPLv2
 
